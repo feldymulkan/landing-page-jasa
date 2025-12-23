@@ -24,9 +24,9 @@ const Navbar = () => {
           <a href="#services" className="hover:text-brand-accent transition">Layanan</a>
           <a href="#partners" className="hover:text-brand-accent transition">Partner</a>
           <a href="#pricing" className="hover:text-brand-accent transition">Harga</a>
-          <button className="bg-brand-accent text-brand-dark px-6 py-2 rounded-lg font-bold hover:bg-yellow-400 transition">
+          {/* <button className="bg-brand-accent text-brand-dark px-6 py-2 rounded-lg font-bold hover:bg-yellow-400 transition">
             Hubungi Kami
-          </button>
+          </button> */}
         </div>
 
         {/* Mobile Menu Button */}
