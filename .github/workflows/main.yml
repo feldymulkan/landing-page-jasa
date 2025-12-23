@@ -36,5 +36,5 @@ jobs:
           npm run build
 
           echo '🚀 Restart PM2 (landing-page)'
-          pm2 stop landing-page || pm2 start npm --name landing-page -- run preview
+          pm2 restart landing-page || pm2 start npm --name landing-page -- run preview
           "
