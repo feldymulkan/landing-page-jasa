@@ -1,0 +1,40 @@
+name: Deploy Vite DEV
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Deploy to Server
+        run: |
+          ssh -o StrictHostKeyChecking=no \
+          -p ${{ secrets.SERVER_PORT }} \
+          ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "
+          
+          cd ${{ secrets.PROJECT_PATH }} || exit 1
+
+          echo '📥 Update source code'
+          git fetch --all
+          git reset --hard origin/dev
+
+          echo '📦 Install dependencies'
+          npm install --force
+
+          echo '🏗 Build Vite'
+          npm run build
+
+          echo '🚀 Restart PM2 (landing-page)'
+          pm2 restart landing-page || pm2 start npm --name landing-page -- run preview
+          "
