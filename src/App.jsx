@@ -5,7 +5,7 @@ import VpnIllustration from './assets/VpnIllustration.jsx';
 import RadiusIllustration from './assets/RadiusIllustration.jsx';
 
 // Kontak utama (WhatsApp)
-const WA_NUMBER = import.meta.env.VITE_WA_NUMBER || '6281234567890';
+const WA_NUMBER = import.meta.env.VITE_WA_NUMBER || '+6283129431925';
 const buildWaLink = (message) => `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(message)}`;
 
 // --- Komponen Navbar ---
